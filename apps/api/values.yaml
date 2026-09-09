@@ -1,0 +1,17 @@
+replicaCount: 2
+
+image:
+  repository: 730335572375.dkr.ecr.us-east-1.amazonaws.com/tf-k8s-three-prod/api
+  tag: 8e69ea5c29a07b10a2931619203a65e4acda53c2
+  pullPolicy: IfNotPresent
+
+service:
+  port: 80
+  targetPort: 3000
+
+resources:
+  requests:
+    cpu: 50m
+    memory: 64Mi
+  limits:
+    memory: 128Mi
