@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: api
 spec:
-  replicas: { { .Values.replicaCount } }
+  replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
       app: api
@@ -15,24 +15,24 @@ spec:
       containers:
         - name: api
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-          imagePullPolicy: { { .Values.image.pullPolicy } }
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
-            - containerPort: { { .Values.service.targetPort } }
+            - containerPort: {{ .Values.service.targetPort }}
           livenessProbe:
             httpGet:
               path: /healthz
-              port: { { .Values.service.targetPort } }
+              port: {{ .Values.service.targetPort }}
             initialDelaySeconds: 10
             periodSeconds: 15
           readinessProbe:
             httpGet:
               path: /readyz
-              port: { { .Values.service.targetPort } }
+              port: {{ .Values.service.targetPort }}
             initialDelaySeconds: 5
             periodSeconds: 10
           resources:
             requests:
-              cpu: { { .Values.resources.requests.cpu } }
-              memory: { { .Values.resources.requests.memory } }
+              cpu: {{ .Values.resources.requests.cpu }}
+              memory: {{ .Values.resources.requests.memory }}
             limits:
-              memory: { { .Values.resources.limits.memory } }
+              memory: {{ .Values.resources.limits.memory }}
