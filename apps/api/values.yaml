@@ -18,3 +18,9 @@ resources:
 
 ingress:
   enabled: true
+
+database:
+  host: tf-k8s-three-prod-postgres.ck968c8q2md1.us-east-1.rds.amazonaws.com
+  port: 5432
+  name: appdb
+  secretArn: arn:aws:secretsmanager:us-east-1:730335572375:secret:rds!db-fda799cd-dabc-4cf7-9700-23d27a37a75b-RbTYI
