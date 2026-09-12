@@ -30,6 +30,8 @@ spec:
             - name: PGDATABASE
               value: {{ .Values.database.name | quote }}
             - name: PGUSER
+            - name: RUN_MIGRATIONS
+              value: "true"
               valueFrom:
                 secretKeyRef:
                   name: db-credentials
