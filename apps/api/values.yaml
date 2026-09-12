@@ -2,7 +2,7 @@ replicaCount: 2
 
 image:
   repository: 730335572375.dkr.ecr.us-east-1.amazonaws.com/tf-k8s-three-prod/api
-  tag: 83ebee358fdbdf1495bf9be536d2e66b188fd9b5
+  tag: bb5d61d5ac57dd6001d790d661d14e2169efeab7
   pullPolicy: IfNotPresent
 
 service:
