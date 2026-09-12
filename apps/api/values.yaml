@@ -30,3 +30,6 @@ autoscaling:
   minReplicas: 2
   maxReplicas: 6
   targetCPU: 70
+
+vpa:
+  enabled: true

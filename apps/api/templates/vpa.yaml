@@ -1,0 +1,22 @@
+{{- if .Values.vpa.enabled }}
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: api
+spec:
+  targetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: api
+  updatePolicy:
+    # Recommendations only. Auto mode evicts pods on every adjustment
+    # and would fight HPA over the CPU request.
+    updateMode: "Off"
+  resourcePolicy:
+    containerPolicies:
+      - containerName: api
+        # HPA scales on CPU. If VPA also moved the CPU request, HPA's
+        # target percentage would be measured against a shifting
+        # baseline. Memory only.
+        controlledResources: ["memory"]
+{{- end }}
