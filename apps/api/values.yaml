@@ -12,9 +12,9 @@ service:
 resources:
   requests:
     cpu: 25m
-    memory: 64Mi
+    memory: 100Mi
   limits:
-    memory: 192Mi
+    memory: 256Mi
 
 ingress:
   enabled: true
