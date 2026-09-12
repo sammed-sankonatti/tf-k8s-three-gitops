@@ -22,32 +22,12 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - containerPort: {{ .Values.service.targetPort }}
+          envFrom:
+            - configMapRef:
+                name: db-config
+            - secretRef:
+                name: db-credentials
           env:
-            - name: PGHOST
-              valueFrom:
-                configMapKeyRef:
-                  name: db-config
-                  key: PGHOST
-            - name: PGPORT
-              valueFrom:
-                configMapKeyRef:
-                  name: db-config
-                  key: PGPORT
-            - name: PGDATABASE
-              valueFrom:
-                configMapKeyRef:
-                  name: db-config
-                  key: PGDATABASE
-            - name: PGUSER
-              valueFrom:
-                secretKeyRef:
-                  name: db-credentials
-                  key: username
-            - name: PGPASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: db-credentials
-                  key: password
             - name: RUN_MIGRATIONS
               value: "true"
           
