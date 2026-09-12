@@ -33,3 +33,6 @@ autoscaling:
 
 vpa:
   enabled: true
+
+serviceMonitor:
+  enabled: true
